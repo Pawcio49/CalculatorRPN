@@ -24,68 +24,148 @@
             android:orientation="vertical"
             android:weightSum="100">
 
-            <TextView
-                android:id="@+id/stack"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="14"
-                android:gravity="center"
-                android:text="STACK: "
-                android:textAlignment="textEnd"
-                android:textSize="20sp"
-                tools:ignore="RtlCompat" />
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textView2"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="20"
+                    android:gravity="center"
+                    android:text="STACK: "
+                    android:textAlignment="textEnd"
+                    android:textSize="20sp"
+                    tools:ignore="RtlCompat" />
+
+                <TextView
+                    android:id="@+id/stackSizeView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="80"
+                    android:gravity="center"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp"
+                    tools:ignore="RtlCompat" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="16"
-                android:gravity="center"
-                android:text="4:"
-                android:textAlignment="viewStart"
-                android:textSize="28sp"
-                tools:ignore="RtlCompat" />
+                android:layout_weight="14"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textView3"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="90"
+                    android:gravity="center"
+                    android:text="4: "
+                    android:textAlignment="textEnd"
+                    android:textSize="28sp"
+                    tools:ignore="RtlCompat" />
+
+                <TextView
+                    android:id="@+id/stackNumber4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="10"
+                    android:gravity="center"
+                    android:textAlignment="viewStart"
+                    android:textSize="28sp"
+                    tools:ignore="RtlCompat" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="16"
-                android:gravity="center"
-                android:text="3:"
-                android:textAlignment="viewStart"
-                android:textSize="28sp"
-                tools:ignore="RtlCompat" />
+                android:layout_weight="14"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textView4"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="90"
+                    android:gravity="center"
+                    android:text="3: "
+                    android:textAlignment="textEnd"
+                    android:textSize="28sp"
+                    tools:ignore="RtlCompat" />
+
+                <TextView
+                    android:id="@+id/stackNumber3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="10"
+                    android:gravity="center"
+                    android:textAlignment="viewStart"
+                    android:textSize="28sp"
+                    tools:ignore="RtlCompat" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="16"
-                android:gravity="center"
-                android:text="2:"
-                android:textAlignment="viewStart"
-                android:textSize="28sp"
-                tools:ignore="RtlCompat" />
+                android:layout_weight="14"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textView5"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="90"
+                    android:gravity="center"
+                    android:text="2: "
+                    android:textAlignment="textEnd"
+                    android:textSize="28sp"
+                    tools:ignore="RtlCompat" />
+
+                <TextView
+                    android:id="@+id/stackNumber2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="10"
+                    android:gravity="center"
+                    android:textAlignment="viewStart"
+                    android:textSize="28sp"
+                    tools:ignore="RtlCompat" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="16"
-                android:gravity="center"
-                android:text="1:"
-                android:textAlignment="viewStart"
-                android:textSize="28sp"
-                tools:ignore="RtlCompat" />
+                android:layout_weight="14"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="90"
+                    android:gravity="center"
+                    android:text="1: "
+                    android:textAlignment="textEnd"
+                    android:textSize="28sp"
+                    tools:ignore="RtlCompat" />
+
+                <TextView
+                    android:id="@+id/stackNumber1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="10"
+                    android:gravity="center"
+                    android:textAlignment="viewStart"
+                    android:textSize="28sp"
+                    tools:ignore="RtlCompat" />
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/currentNumberView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="22"
                 android:gravity="center"
-                android:text="155"
                 android:textAlignment="center"
                 android:textSize="34sp"
                 tools:ignore="RtlCompat" />
@@ -168,7 +248,7 @@
                     android:paddingBottom="4dp">
 
                     <ImageView
-                        android:id="@+id/set"
+                        android:id="@+id/setting"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:srcCompat="@drawable/set" />
@@ -210,7 +290,7 @@
                     android:paddingBottom="4dp">
 
                     <ImageView
-                        android:id="@+id/minus"
+                        android:id="@+id/substract"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:srcCompat="@drawable/minus" />
@@ -226,7 +306,7 @@
                     android:paddingBottom="4dp">
 
                     <ImageView
-                        android:id="@+id/multi"
+                        android:id="@+id/multiply"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:srcCompat="@drawable/multi" />
@@ -268,10 +348,10 @@
                     android:paddingBottom="4dp">
 
                     <ImageView
-                        android:id="@+id/nr7"
+                        android:id="@+id/no7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/nr7" />
+                        app:srcCompat="@drawable/no7" />
                 </FrameLayout>
 
                 <FrameLayout
@@ -284,10 +364,10 @@
                     android:paddingBottom="4dp">
 
                     <ImageView
-                        android:id="@+id/nr8"
+                        android:id="@+id/no8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/nr8" />
+                        app:srcCompat="@drawable/no8" />
                 </FrameLayout>
 
                 <FrameLayout
@@ -300,10 +380,10 @@
                     android:paddingBottom="4dp">
 
                     <ImageView
-                        android:id="@+id/nr9"
+                        android:id="@+id/no9"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/nr9" />
+                        app:srcCompat="@drawable/no9" />
                 </FrameLayout>
 
                 <FrameLayout
@@ -316,7 +396,7 @@
                     android:paddingBottom="4dp">
 
                     <ImageView
-                        android:id="@+id/div"
+                        android:id="@+id/divide"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:srcCompat="@drawable/div" />
@@ -342,10 +422,10 @@
                     android:paddingBottom="4dp">
 
                     <ImageView
-                        android:id="@+id/nr4"
+                        android:id="@+id/no4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/nr4" />
+                        app:srcCompat="@drawable/no4" />
                 </FrameLayout>
 
                 <FrameLayout
@@ -358,10 +438,10 @@
                     android:paddingBottom="4dp">
 
                     <ImageView
-                        android:id="@+id/nr5"
+                        android:id="@+id/no5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/nr5" />
+                        app:srcCompat="@drawable/no5" />
                 </FrameLayout>
 
                 <FrameLayout
@@ -374,10 +454,10 @@
                     android:paddingBottom="4dp">
 
                     <ImageView
-                        android:id="@+id/nr6"
+                        android:id="@+id/no6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/nr6" />
+                        app:srcCompat="@drawable/no6" />
                 </FrameLayout>
 
                 <FrameLayout
@@ -416,10 +496,10 @@
                     android:paddingBottom="4dp">
 
                     <ImageView
-                        android:id="@+id/nr1"
+                        android:id="@+id/no1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/nr1" />
+                        app:srcCompat="@drawable/no1" />
                 </FrameLayout>
 
                 <FrameLayout
@@ -432,10 +512,10 @@
                     android:paddingBottom="4dp">
 
                     <ImageView
-                        android:id="@+id/nr2"
+                        android:id="@+id/no2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/nr2" />
+                        app:srcCompat="@drawable/no2" />
                 </FrameLayout>
 
                 <FrameLayout
@@ -448,10 +528,10 @@
                     android:paddingBottom="4dp">
 
                     <ImageView
-                        android:id="@+id/nr3"
+                        android:id="@+id/no3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/nr3" />
+                        app:srcCompat="@drawable/no3" />
                 </FrameLayout>
 
                 <FrameLayout
@@ -490,10 +570,10 @@
                     android:paddingBottom="4dp">
 
                     <ImageView
-                        android:id="@+id/nr0"
+                        android:id="@+id/no0"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/nr0" />
+                        app:srcCompat="@drawable/no0" />
                 </FrameLayout>
 
                 <FrameLayout
@@ -506,7 +586,7 @@
                     android:paddingBottom="4dp">
 
                     <ImageView
-                        android:id="@+id/neg"
+                        android:id="@+id/negation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:srcCompat="@drawable/neg" />
