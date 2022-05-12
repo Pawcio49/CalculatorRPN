@@ -1,11 +1,15 @@
 package com.example.calculatorrpn
 
+import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.settings_activity.*
 import kotlin.math.pow
 import kotlin.math.sqrt
 
@@ -16,10 +20,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var stackNumber2 : TextView
     private lateinit var stackNumber3 : TextView
     private lateinit var stackNumber4 : TextView
+    private lateinit var displayLayout : LinearLayout
 
     private val stack = mutableListOf<Double>()
+    private val defaultPrecision : Int = 8
+    private val defaultBackgroundColor : String = "#FFFFFF"
     private lateinit var currentNumber : String
-
+    private var precision : Int = defaultPrecision
+    private var backgroundColor : String = defaultBackgroundColor
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +40,33 @@ class MainActivity : AppCompatActivity() {
         setNumberOnClickListeners()
         setOperationsListeners()
         setOtherKeysOnClickListeners()
+
+        displayLayout = findViewById(R.id.displayLayout)
+    }
+
+    private val startForResult = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val intent = result.data
+            if (intent != null) {
+                precision = intent.getIntExtra("precision", defaultPrecision)
+                backgroundColor = intent.getStringExtra("colorCode").toString()
+                displayLayout.setBackgroundColor(Color.parseColor(backgroundColor))
+                updateStack()
+            }
+        }
+    }
+
+    private fun setStackSizeView() {
+        stackSizeView = findViewById(R.id.stackSizeView)
+        stackSizeView.text = "0"
+    }
+
+    private fun setStackNumbers() {
+        stackNumber1 = findViewById(R.id.stackNumber1)
+        stackNumber2 = findViewById(R.id.stackNumber2)
+        stackNumber3 = findViewById(R.id.stackNumber3)
+        stackNumber4 = findViewById(R.id.stackNumber4)
     }
 
     private fun setStartingCurrentNumber() {
@@ -122,44 +157,40 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setStackSizeView() {
-        stackSizeView = findViewById(R.id.stackSizeView)
-        stackSizeView.text = "0"
-    }
-
     private fun updateStack() {
         val n = stack.size
+
         if(n >= 4) {
-            stackNumber4.text = stack[n-4].toString()
+            stackNumber4.text = String.format("%.${precision}f", stack[n-4])
         } else {
             stackNumber4.text = ""
         }
         if(n >= 3) {
-            stackNumber3.text = stack[n-3].toString()
+            stackNumber3.text = String.format("%.${precision}f", stack[n-3])
         } else {
             stackNumber3.text = ""
         }
         if(n >= 2) {
-            stackNumber2.text = stack[n-2].toString()
+            stackNumber2.text = String.format("%.${precision}f", stack[n-2])
         } else {
             stackNumber2.text = ""
         }
         if(n >= 1) {
-            stackNumber1.text = stack[n-1].toString()
+            stackNumber1.text = String.format("%.${precision}f", stack[n-1])
         } else {
             stackNumber1.text = ""
         }
         stackSizeView.text = stack.size.toString()
     }
 
-    private fun setStackNumbers() {
-        stackNumber1 = findViewById(R.id.stackNumber1)
-        stackNumber2 = findViewById(R.id.stackNumber2)
-        stackNumber3 = findViewById(R.id.stackNumber3)
-        stackNumber4 = findViewById(R.id.stackNumber4)
-    }
-
     private fun setOtherKeysOnClickListeners() {
+        setting.setOnClickListener() {
+            val intent = Intent(this, SettingsActivity::class.java)
+            intent.putExtra("precision", precision)
+            intent.putExtra("colorCode", backgroundColor)
+            startForResult.launch(intent)
+        }
+
         negation.setOnClickListener() {
             if(currentNumber[0] != '0') {
                 currentNumber = if(currentNumber[0] == '-') {
@@ -203,16 +234,8 @@ class MainActivity : AppCompatActivity() {
 
         enter.setOnClickListener() {
             stack.add(currentNumber.toDouble())
-
             setStartingCurrentNumber()
-
             updateStack()
-            println(stack)
-        }
-
-        setting.setOnClickListener() {
-            val intent = Intent(this, SettingsActivity::class.java)
-            startActivity(intent)
         }
     }
 
