@@ -76,7 +76,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun onClickNumber(digit : Int) {
-        if(currentNumber[0] == '0'){
+        if(currentNumber.length == 1 && currentNumber[0] == '0'){
             currentNumber = digit.toString()
         } else {
             currentNumber += digit.toString()
@@ -192,14 +192,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         negation.setOnClickListener() {
-            if(currentNumber[0] != '0') {
-                currentNumber = if(currentNumber[0] == '-') {
-                    currentNumber.drop(1)
-                } else {
-                    "-$currentNumber"
-                }
-                currentNumberView.text = currentNumber
+            currentNumber = if(currentNumber[0] == '-') {
+                currentNumber.drop(1)
+            } else {
+                "-$currentNumber"
             }
+            currentNumberView.text = currentNumber
         }
 
         dot.setOnClickListener() {
